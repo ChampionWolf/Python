@@ -7,6 +7,7 @@ Shop = [
     {'Name':'AppleWatch','price':'8000'},
 ]
 yue = 0 #定义余额初始为0
+
 while 1:
     print "-" * 20, "欢迎来到小狼购物商城", "-" * 20
     print '''
@@ -16,10 +17,12 @@ while 1:
             4.移除商品
             5.查看余额
             6.余额充值
-            7.退出系统
+            7.购买历史
+            8.退出系统
+
             '''
     ipt = input("请输入您要进行的操作：")
-    if 0 < ipt < 8:
+    if 0 < ipt < 9:
         if ipt == 1:
             for index, i in enumerate(Shop):
                 print "编号：", index, " ", i["Name"], i["price"], "元"  # 打印出商品列表
@@ -49,6 +52,9 @@ while 1:
                         print "购买成功！ 但是你的钱已经用完了，再带点钱再来吧"
                         break
                        #每次循环用户的余额会相应扣除
+                    elif rmb < zj:
+                        print "你的余额不足，请返回充值"
+                        break
             else:
                 print "你剩的钱不够啊！"    #如果用户的余额等于0，则输出余额不足
         elif ipt == 3:
@@ -63,11 +69,13 @@ while 1:
             del Shop[yc]
             print "删除成功！"
         elif ipt == 5:
-            print yue
+            print yue,"元"
         elif ipt == 6:
             cz = input("请输入你充值的金额：")
             yue = cz + yue
         elif ipt == 7:
+            pass
+        elif ipt == 8:
             exit()
     else:
         print "你的输入有误，请重新输入"
